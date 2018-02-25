@@ -101,6 +101,11 @@ $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
 $msg="Employee record added Successfully";
+$empid=$_POST['empcode'];
+$sql="INSERT INTO feedback(empid) VALUES(:empid)";
+$query = $dbh->prepare($sql);
+$query->bindParam(':empid',$empid,PDO::PARAM_STR);
+$query->execute();
 }
 else 
 {
